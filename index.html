@@ -341,7 +341,7 @@ hint:{zh:'點下方照片置頂，點最上面一張合為平面',en:'Tap a phot
 more:{zh:'看更多照片 ↗︎',en:'View more photos ↗︎',ja:'写真をもっと見る ↗︎'},
 none:{zh:'還沒有案子，進入編輯模式後可以新增。',en:'No projects yet.',ja:'まだ案件がありません。'},
 email:{zh:'Email：',en:'Email: ',ja:'メール：'},ig:{zh:'Instagram：',en:'Instagram: ',ja:'Instagram：'}};
-let lang='zh';try{const v=localStorage.getItem('lang');if(v==='en'||v==='ja')lang=v}catch(_){}
+let lang='zh';try{const v=localStorage.getItem('lang');if(v==='zh'||v==='en'||v==='ja')lang=v;else{const ls=(navigator.languages&&navigator.languages.length?navigator.languages:[navigator.language||'']).map(x=>String(x).toLowerCase());const f=ls.find(x=>/^(ja|zh|en)/.test(x));let tz='';try{tz=Intl.DateTimeFormat().resolvedOptions().timeZone||''}catch(_){}if(f)lang=f.startsWith('ja')?'ja':f.startsWith('zh')?'zh':'en';else if(/^Asia\/Tokyo$/.test(tz))lang='ja'}}catch(_){}
 const L=()=>editing?'zh':lang;
 const U=k=>UI[k][L()]??UI[k].zh;
 const tr1=s=>{const r=TR[String(s).trim()];return r?(r[L()==='en'?0:1]||s):s};
